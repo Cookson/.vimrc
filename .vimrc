@@ -212,10 +212,6 @@ function! s:SurroundWithTryCatch()
 	"Insert tabs inside catch (e) {}
 	execute "normal! " . (endl+3) . "ggi" . repeat("\<Tab>", s:HowManyTabs(startl))
 	call feedkeys("A", "n") " Press A in normal mode
-
-		"
-		"
-		"
 endfunction
 inoremap <s-cr> <esc>:call InsertJSDocLineStart()<cr>
 au FileType javascript call JavaScriptFold()
