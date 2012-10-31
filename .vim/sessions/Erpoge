@@ -1,0 +1,880 @@
+let SessionLoad = 1
+if &cp | set nocp | endif
+let s:cpo_save=&cpo
+set cpo&vim
+imap <F2> :w:echo File savedE
+imap <C-Space> 	
+map! <S-Insert> <MiddleMouse>
+nnoremap  yyp
+nnoremap  :Grep 
+nnoremap   za
+nnoremap ,pxb tabnew ~/.xbindkeysrctabo
+nnoremap ,pC tabnewtaboso ~/C/.session.vim
+nnoremap ,pex tabnewtaboso ~/Work/.other/bitrixex/.session.vim
+nnoremap ,pca :tabnew:taboso ~/Work/.cards/.session.vim
+nnoremap ,c :call ToggleComments()
+nnoremap ,m hgg/
+nnoremap ,rs :so $MYVIMRC
+nnoremap ,rr :vsplit $MYVIMRC
+nnoremap ,sc :SessionClose
+nnoremap ,ss :SessionSave
+nnoremap ,sl :SessionList
+nnoremap <Alt-c> ToggleComments()
+nmap D E!!date "+--- \%d \%B ---"2ji
+nmap E G?[^\s]2ji
+nmap gx <Plug>NetrwBrowseX
+onoremap in( :normal! f(vi(
+onoremap p i(
+nnoremap <F9> :!~/workspace/Erpoge\ Server/run_server.sh &
+nnoremap <F10> /home/cookson/workspace/run_
+nnoremap <silent> <Plug>NetrwBrowseX :call netrw#NetrwBrowseX(expand("<cWORD>"),0)
+nnoremap <C-F12> :NERDTreeClose
+nnoremap <F12> :call NERDTreeTouch()
+nnoremap <Down> <Nop>
+nnoremap <Up> <Nop>
+nnoremap <Right> <Nop>
+nnoremap <Left> <Nop>
+map <S-Insert> <MiddleMouse>
+imap  <S-Insert>
+nnoremap ã ToggleComments()
+iabbr fucntion function
+let &cpo=s:cpo_save
+unlet s:cpo_save
+set autoindent
+set background=dark
+set backspace=indent,eol,start
+set dictionary=/usr/share/vim/vim72/dictionaries/javascript.dictionary
+set errorfile=/tmp/vv7py11/26
+set fileencodings=ucs-bom,utf-8,default,latin1
+set foldlevelstart=1
+set helplang=en
+set history=50
+set hlsearch
+set ignorecase
+set iminsert=0
+set imsearch=0
+set incsearch
+set langmap=йцукенгшщзхъфывап��олджэячсмитьбюЙЦУКЕHГШЩЗХЪФЫВАПРО��ДЖЭЯЧСМИТЬБЮ;qwertyuiop[]asdfghjkl;'zxcvbnm,.QWERTYUIOP{}ASDFGHJKL:\"ZXCVBNM<>
+set nomodeline
+set mouse=a
+set omnifunc=javascriptcomplete#CompleteJS
+set printoptions=paper:letter
+set ruler
+set runtimepath=~/.vim,~/.vim/bundle/nerdtree,/var/lib/vim/addons,/usr/share/vim/vimfiles,/usr/share/vim/vim72,/usr/share/vim/vimfiles/after,/var/lib/vim/addons/after,~/.vim/after
+set shiftwidth=4
+set smarttab
+set statusline=%f\ Filetype\ -\ %y
+set suffixes=.bak,~,.swp,.o,.info,.aux,.log,.dvi,.bbl,.blg,.brf,.cb,.ind,.idx,.ilg,.inx,.out,.toc
+set tabstop=4
+set termencoding=utf-8
+set window=51
+let s:so_save = &so | let s:siso_save = &siso | set so=0 siso=0
+let v:this_session=expand("<sfile>:p")
+silent only
+cd ~/workspace/Erpoge\ Client
+if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
+  let s:wipebuf = bufnr('%')
+endif
+set shortmess=aoO
+badd +1 ~/workspace/Erpoge\ Client/VimRC
+badd +7 ~/.vim/sessions/Erpoge
+badd +1 ~/workspace/Erpoge\ Client/ui.js
+badd +1 ~/workspace/Erpoge\ Client/character.js
+badd +42 ~/workspace/Erpoge\ Client/index.html
+badd +1 ~/workspace/Erpoge\ Client/gui.js
+badd +331 style.css
+badd +131 ~/workspace/Erpoge\ Client/system.js
+badd +8 loadingScreen.js
+badd +1 ~/workspace/Erpoge\ Client/game.js
+badd +2 ~/workspace/Erpoge\ Server/run_server.sh
+badd +169 serverAnswers.js
+badd +470 uiElementTypes.js
+badd +12 model.js
+badd +1 ~/workspace/Erpoge\ Client/effects.js
+badd +1 ~/workspace/Erpoge\ Client/flexcroll.js
+badd +282 ~/workspace/Erpoge\ Client/handlers.js
+badd +18 ~/.vimrc
+badd +221 defaultUIActions.js
+badd +54 net.js
+badd +1 ~/workspace/Erpoge\ Client/content.txt
+badd +3 ~/workspace/Erpoge\ Client/language.js
+badd +6 ~/workspace/Erpoge\ Client/frame.js
+silent! argdel *
+edit ~/workspace/Erpoge\ Client/ui.js
+set splitbelow splitright
+wincmd _ | wincmd |
+split
+1wincmd k
+wincmd _ | wincmd |
+vsplit
+1wincmd h
+wincmd w
+wincmd w
+set nosplitbelow
+set nosplitright
+wincmd t
+set winheight=1 winwidth=1
+exe '1resize ' . ((&lines * 39 + 26) / 52)
+exe 'vert 1resize ' . ((&columns * 31 + 77) / 155)
+exe '2resize ' . ((&lines * 39 + 26) / 52)
+exe 'vert 2resize ' . ((&columns * 123 + 77) / 155)
+exe '3resize ' . ((&lines * 10 + 26) / 52)
+argglobal
+enew
+file NERD_tree_1
+nnoremap <buffer> ,m l
+setlocal keymap=
+setlocal noarabic
+setlocal autoindent
+setlocal balloonexpr=
+setlocal nobinary
+setlocal bufhidden=hide
+setlocal nobuflisted
+setlocal buftype=nofile
+setlocal nocindent
+setlocal cinkeys=0{,0},0),:,0#,!^F,o,O,e
+setlocal cinoptions=
+setlocal cinwords=if,else,while,do,for,switch
+setlocal comments=s1:/*,mb:*,ex:*/,://,b:#,:%,:XCOMM,n:>,fb:-
+setlocal commentstring=/*%s*/
+setlocal complete=.,w,b,u,t,i
+setlocal completefunc=
+setlocal nocopyindent
+setlocal nocursorcolumn
+setlocal cursorline
+setlocal define=
+setlocal dictionary=
+setlocal nodiff
+setlocal equalprg=
+setlocal errorformat=
+setlocal noexpandtab
+if &filetype != 'nerdtree'
+setlocal filetype=nerdtree
+endif
+set foldcolumn=4
+setlocal foldcolumn=0
+setlocal nofoldenable
+setlocal foldexpr=0
+setlocal foldignore=#
+setlocal foldlevel=1
+setlocal foldmarker={{{,}}}
+set foldmethod=syntax
+setlocal foldmethod=manual
+setlocal foldminlines=1
+setlocal foldnestmax=20
+setlocal foldtext=foldtext()
+setlocal formatexpr=
+setlocal formatoptions=tcq
+setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
+setlocal grepprg=
+setlocal iminsert=0
+setlocal imsearch=0
+setlocal include=
+setlocal includeexpr=
+setlocal indentexpr=
+setlocal indentkeys=0{,0},:,0#,!^F,o,O,e
+setlocal noinfercase
+setlocal iskeyword=@,48-57,_,192-255
+setlocal keywordprg=
+setlocal nolinebreak
+setlocal nolisp
+setlocal nolist
+setlocal makeprg=
+setlocal matchpairs=(:),{:},[:]
+setlocal nomodeline
+setlocal nomodifiable
+setlocal nrformats=octal,hex
+set number
+setlocal nonumber
+setlocal numberwidth=4
+setlocal omnifunc=javascriptcomplete#CompleteJS
+setlocal path=
+setlocal nopreserveindent
+setlocal nopreviewwindow
+setlocal quoteescape=\\
+setlocal noreadonly
+setlocal norightleft
+setlocal rightleftcmd=search
+setlocal noscrollbind
+setlocal shiftwidth=4
+setlocal noshortname
+setlocal nosmartindent
+setlocal softtabstop=0
+setlocal nospell
+setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
+setlocal spellfile=
+setlocal spelllang=en
+setlocal statusline=%{exists('b:NERDTreeRoot')?b:NERDTreeRoot.path.str():''}
+setlocal suffixesadd=
+setlocal noswapfile
+setlocal synmaxcol=3000
+if &syntax != 'nerdtree'
+setlocal syntax=nerdtree
+endif
+setlocal tabstop=4
+setlocal tags=
+setlocal textwidth=0
+setlocal thesaurus=
+setlocal nowinfixheight
+setlocal winfixwidth
+set nowrap
+setlocal nowrap
+setlocal wrapmargin=0
+wincmd w
+argglobal
+setlocal keymap=
+setlocal noarabic
+setlocal autoindent
+setlocal balloonexpr=
+setlocal nobinary
+setlocal bufhidden=
+setlocal buflisted
+setlocal buftype=
+setlocal nocindent
+setlocal cinkeys=0{,0},0),:,0#,!^F,o,O,e
+setlocal cinoptions=
+setlocal cinwords=if,else,while,do,for,switch
+setlocal comments=s1:/*,mb:*,ex:*/,://,b:#,:%,:XCOMM,n:>,fb:-
+setlocal commentstring=/*%s*/
+setlocal complete=.,w,b,u,t,i
+setlocal completefunc=
+setlocal nocopyindent
+setlocal nocursorcolumn
+setlocal nocursorline
+setlocal define=
+setlocal dictionary=
+setlocal nodiff
+setlocal equalprg=
+setlocal errorformat=
+setlocal noexpandtab
+if &filetype != 'javascript'
+setlocal filetype=javascript
+endif
+set foldcolumn=4
+setlocal foldcolumn=4
+setlocal foldenable
+setlocal foldexpr=0
+setlocal foldignore=#
+setlocal foldlevel=0
+setlocal foldmarker={{{,}}}
+set foldmethod=syntax
+setlocal foldmethod=syntax
+setlocal foldminlines=1
+setlocal foldnestmax=20
+setlocal foldtext=foldtext()
+setlocal formatexpr=
+setlocal formatoptions=tcq
+setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
+setlocal grepprg=
+setlocal iminsert=0
+setlocal imsearch=0
+setlocal include=
+setlocal includeexpr=
+setlocal indentexpr=
+setlocal indentkeys=0{,0},:,0#,!^F,o,O,e
+setlocal noinfercase
+setlocal iskeyword=@,48-57,_,192-255,$
+setlocal keywordprg=
+setlocal nolinebreak
+setlocal nolisp
+setlocal nolist
+setlocal makeprg=
+setlocal matchpairs=(:),{:},[:]
+setlocal nomodeline
+setlocal modifiable
+setlocal nrformats=octal,hex
+set number
+setlocal number
+setlocal numberwidth=4
+setlocal omnifunc=javascriptcomplete#CompleteJS
+setlocal path=
+setlocal nopreserveindent
+setlocal nopreviewwindow
+setlocal quoteescape=\\
+setlocal noreadonly
+setlocal norightleft
+setlocal rightleftcmd=search
+setlocal noscrollbind
+setlocal shiftwidth=4
+setlocal noshortname
+setlocal nosmartindent
+setlocal softtabstop=0
+setlocal nospell
+setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
+setlocal spellfile=
+setlocal spelllang=en
+setlocal statusline=
+setlocal suffixesadd=
+setlocal swapfile
+setlocal synmaxcol=3000
+if &syntax != 'javascript'
+setlocal syntax=javascript
+endif
+setlocal tabstop=4
+setlocal tags=
+setlocal textwidth=0
+setlocal thesaurus=
+setlocal winfixheight
+setlocal nowinfixwidth
+set nowrap
+setlocal nowrap
+setlocal wrapmargin=0
+279
+normal zo
+287
+normal zo
+295
+normal zo
+327
+normal zo
+335
+normal zo
+336
+normal zo
+335
+normal zo
+360
+normal zo
+369
+normal zo
+375
+normal zo
+382
+normal zo
+388
+normal zo
+396
+normal zo
+400
+normal zo
+404
+normal zo
+407
+normal zo
+429
+normal zo
+469
+normal zo
+470
+normal zo
+469
+normal zo
+499
+normal zo
+509
+normal zo
+561
+normal zo
+576
+normal zo
+599
+normal zo
+606
+normal zo
+626
+normal zo
+627
+normal zo
+626
+normal zo
+636
+normal zo
+655
+normal zo
+698
+normal zo
+711
+normal zo
+717
+normal zo
+730
+normal zo
+740
+normal zo
+743
+normal zo
+746
+normal zo
+749
+normal zo
+761
+normal zo
+770
+normal zo
+776
+normal zo
+782
+normal zo
+788
+normal zo
+793
+normal zo
+796
+normal zo
+801
+normal zo
+804
+normal zo
+814
+normal zo
+822
+normal zo
+828
+normal zo
+831
+normal zo
+835
+normal zo
+840
+normal zo
+854
+normal zo
+857
+normal zo
+861
+normal zo
+869
+normal zo
+872
+normal zo
+880
+normal zo
+920
+normal zo
+924
+normal zo
+932
+normal zo
+950
+normal zo
+932
+normal zo
+954
+normal zo
+964
+normal zo
+971
+normal zo
+964
+normal zo
+980
+normal zo
+1023
+normal zo
+1027
+normal zo
+1030
+normal zo
+1034
+normal zo
+1041
+normal zo
+1046
+normal zo
+1050
+normal zo
+1053
+normal zo
+1056
+normal zo
+1059
+normal zo
+1062
+normal zo
+1074
+normal zo
+1077
+normal zo
+1074
+normal zo
+1081
+normal zo
+1093
+normal zo
+1107
+normal zo
+1120
+normal zo
+1127
+normal zo
+1130
+normal zo
+1131
+normal zo
+1158
+normal zo
+1130
+normal zo
+1169
+normal zo
+1172
+normal zo
+1175
+normal zo
+1178
+normal zo
+1187
+normal zo
+1189
+normal zo
+1190
+normal zo
+1197
+normal zo
+1189
+normal zo
+1201
+normal zo
+1205
+normal zo
+1209
+normal zo
+1218
+normal zo
+1187
+normal zo
+1230
+normal zo
+279
+normal zo
+287
+normal zo
+295
+normal zo
+327
+normal zo
+335
+normal zo
+336
+normal zo
+335
+normal zo
+360
+normal zo
+369
+normal zo
+375
+normal zo
+382
+normal zo
+388
+normal zo
+396
+normal zo
+400
+normal zo
+404
+normal zo
+407
+normal zo
+429
+normal zo
+469
+normal zo
+470
+normal zo
+469
+normal zo
+499
+normal zo
+509
+normal zo
+561
+normal zo
+576
+normal zo
+599
+normal zo
+606
+normal zo
+626
+normal zo
+627
+normal zo
+626
+normal zo
+636
+normal zo
+655
+normal zo
+698
+normal zo
+711
+normal zo
+717
+normal zo
+730
+normal zo
+740
+normal zo
+743
+normal zo
+746
+normal zo
+749
+normal zo
+761
+normal zo
+770
+normal zo
+776
+normal zo
+782
+normal zo
+788
+normal zo
+793
+normal zo
+796
+normal zo
+801
+normal zo
+804
+normal zo
+814
+normal zo
+822
+normal zo
+828
+normal zo
+831
+normal zo
+835
+normal zo
+840
+normal zo
+854
+normal zo
+857
+normal zo
+861
+normal zo
+869
+normal zo
+872
+normal zo
+880
+normal zo
+920
+normal zo
+924
+normal zo
+932
+normal zo
+950
+normal zo
+932
+normal zo
+954
+normal zo
+964
+normal zo
+971
+normal zo
+964
+normal zo
+980
+normal zo
+1023
+normal zo
+1027
+normal zo
+1030
+normal zo
+1034
+normal zo
+1041
+normal zo
+1046
+normal zo
+1050
+normal zo
+1053
+normal zo
+1056
+normal zo
+1059
+normal zo
+1062
+normal zo
+1074
+normal zo
+1077
+normal zo
+1074
+normal zo
+1081
+normal zo
+1093
+normal zo
+1107
+normal zo
+1120
+normal zo
+1127
+normal zo
+1130
+normal zo
+1131
+normal zo
+1158
+normal zo
+1130
+normal zo
+1169
+normal zo
+1172
+normal zo
+1175
+normal zo
+1178
+normal zo
+1187
+normal zo
+1189
+normal zo
+1190
+normal zo
+1197
+normal zo
+1189
+normal zo
+1201
+normal zo
+1205
+normal zo
+1209
+normal zo
+1218
+normal zo
+1187
+normal zo
+1230
+normal zo
+let s:l = 282 - ((281 * winheight(0) + 19) / 39)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+282
+normal! 040l
+wincmd w
+argglobal
+enew
+setlocal keymap=
+setlocal noarabic
+setlocal autoindent
+setlocal balloonexpr=
+setlocal nobinary
+setlocal bufhidden=wipe
+setlocal buflisted
+setlocal buftype=quickfix
+setlocal nocindent
+setlocal cinkeys=0{,0},0),:,0#,!^F,o,O,e
+setlocal cinoptions=
+setlocal cinwords=if,else,while,do,for,switch
+setlocal comments=s1:/*,mb:*,ex:*/,://,b:#,:%,:XCOMM,n:>,fb:-
+setlocal commentstring=/*%s*/
+setlocal complete=.,w,b,u,t,i
+setlocal completefunc=
+setlocal nocopyindent
+setlocal nocursorcolumn
+setlocal nocursorline
+setlocal define=
+setlocal dictionary=
+setlocal nodiff
+setlocal equalprg=
+setlocal errorformat=
+setlocal noexpandtab
+if &filetype != 'qf'
+setlocal filetype=qf
+endif
+set foldcolumn=4
+setlocal foldcolumn=4
+setlocal foldenable
+setlocal foldexpr=0
+setlocal foldignore=#
+setlocal foldlevel=1
+setlocal foldmarker={{{,}}}
+set foldmethod=syntax
+setlocal foldmethod=manual
+setlocal foldminlines=1
+setlocal foldnestmax=20
+setlocal foldtext=foldtext()
+setlocal formatexpr=
+setlocal formatoptions=tcq
+setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
+setlocal grepprg=
+setlocal iminsert=0
+setlocal imsearch=0
+setlocal include=
+setlocal includeexpr=
+setlocal indentexpr=
+setlocal indentkeys=0{,0},:,0#,!^F,o,O,e
+setlocal noinfercase
+setlocal iskeyword=@,48-57,_,192-255
+setlocal keywordprg=
+setlocal nolinebreak
+setlocal nolisp
+setlocal nolist
+setlocal makeprg=
+setlocal matchpairs=(:),{:},[:]
+setlocal nomodeline
+setlocal nomodifiable
+setlocal nrformats=octal,hex
+set number
+setlocal number
+setlocal numberwidth=4
+setlocal omnifunc=javascriptcomplete#CompleteJS
+setlocal path=
+setlocal nopreserveindent
+setlocal nopreviewwindow
+setlocal quoteescape=\\
+setlocal noreadonly
+setlocal norightleft
+setlocal rightleftcmd=search
+setlocal noscrollbind
+setlocal shiftwidth=4
+setlocal noshortname
+setlocal nosmartindent
+setlocal softtabstop=0
+setlocal nospell
+setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
+setlocal spellfile=
+setlocal spelllang=en
+setlocal statusline=
+setlocal suffixesadd=
+setlocal noswapfile
+setlocal synmaxcol=3000
+if &syntax != 'qf'
+setlocal syntax=qf
+endif
+setlocal tabstop=4
+setlocal tags=
+setlocal textwidth=0
+setlocal thesaurus=
+setlocal winfixheight
+setlocal nowinfixwidth
+set nowrap
+setlocal nowrap
+setlocal wrapmargin=0
+wincmd w
+2wincmd w
+exe '1resize ' . ((&lines * 39 + 26) / 52)
+exe 'vert 1resize ' . ((&columns * 31 + 77) / 155)
+exe '2resize ' . ((&lines * 39 + 26) / 52)
+exe 'vert 2resize ' . ((&columns * 123 + 77) / 155)
+exe '3resize ' . ((&lines * 10 + 26) / 52)
+tabnext 1
+if exists('s:wipebuf')
+  silent exe 'bwipe ' . s:wipebuf
+endif
+unlet! s:wipebuf
+set winheight=1 winwidth=20 shortmess=filnxtToO
+let s:sx = expand("<sfile>:p:r")."x.vim"
+if file_readable(s:sx)
+  exe "source " . fnameescape(s:sx)
+endif
+let &so = s:so_save | let &siso = s:siso_save
+doautoall SessionLoadPost
+unlet SessionLoad
+" vim: set ft=vim :
