@@ -1,0 +1,9 @@
+[submodule ".vim/bundle/fugitive"]
+	path = .vim/bundle/fugitive
+	url = http://github.com/tpope/vim-fugitive.git
+[submodule "/home/cookson/.vim/bundle/sudo"]
+	path = .vim/bundle/sudo
+	url = https://github.com/vim-scripts/sudo.vim.git
+[submodule "/home/cookson/.vim/bundle/vimproc"]
+	path = .vim/bundle/vimproc
+	url = https://github.com/Shougo/vimproc.git

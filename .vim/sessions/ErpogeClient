@@ -3,6 +3,7 @@ if &cp | set nocp | endif
 let s:cpo_save=&cpo
 set cpo&vim
 imap <F2> :w:echo File savedE
+inoremap <expr> <SNR>42_(bs-ctrl-]) getline('.')[col('.') - 2] ==# "\" ? "\<BS>" : ''
 inoremap <S-CR> :call InsertJSDocLineStart()
 imap <C-Space> 	
 map! <S-Insert> <MiddleMouse>
@@ -30,6 +31,8 @@ onoremap p i(
 nnoremap <F10> /home/cookson/workspace/run_
 nnoremap <F9> :!~/workspace/Erpoge\ Server/run_server.sh &
 nnoremap <silent> <Plug>NetrwBrowseX :call netrw#NetrwBrowseX(expand("<cWORD>"),0)
+nnoremap <silent> <Plug>(vimshell_create) :VimShellCreate
+nnoremap <silent> <Plug>(vimshell_switch) :VimShell
 nnoremap <F2> :w
 nnoremap <C-F12> :NERDTreeClose
 nnoremap <F12> :call NERDTreeTouch()
@@ -76,6 +79,7 @@ set noshowmode
 set smarttab
 set statusline=%f\ Filetype\ -\ %y
 set suffixes=.bak,~,.swp,.o,.info,.aux,.log,.dvi,.bbl,.blg,.brf,.cb,.ind,.idx,.ilg,.inx,.out,.toc
+set noswapfile
 set tabstop=4
 set termencoding=utf-8
 set window=57
@@ -87,10 +91,10 @@ if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
 set shortmess=aoO
-badd +216 ~/.vimrc
+badd +23 ~/.vimrc
 badd +49 game.js
 badd +1211 gui.js
-badd +441 model.js
+badd +385 model.js
 badd +901 character.js
 badd +190 serverAnswers.js
 badd +81 variables.js
@@ -110,97 +114,22 @@ badd +615 uiElementTypes.js
 badd +1 ]
 badd +1 loadingScreen.js
 badd +8 ~/workspace/.git/config
-badd +80 ~/workspace/Erpoge\ Client/todo.txt
+badd +80 todo.txt
 badd +12 graphicEffects.js
 badd +86 browserGraphics.js
 badd +1 tr
-badd +0 ~/.xbindkeysrc
+badd +89 ~/.xbindkeysrc
+badd +36 sudo:/etc/passwd
+badd +23 *vimshell*\ -\ default
 silent! argdel *
-edit ~/.xbindkeysrc
+edit game.js
 set splitbelow splitright
 set nosplitbelow
 set nosplitright
 wincmd t
 set winheight=1 winwidth=1
 argglobal
-lnoremap <buffer> " Э
-lnoremap <buffer> # №
-lnoremap <buffer> $ ;
-lnoremap <buffer> & ?
-lnoremap <buffer> ' э
-lnoremap <buffer> , б
-lnoremap <buffer> . ю
-lnoremap <buffer> / .
-lnoremap <buffer> : Ж
-lnoremap <buffer> ; ж
-lnoremap <buffer> < Б
-lnoremap <buffer> > Ю
-lnoremap <buffer> ? ,
-lnoremap <buffer> @ "
-lnoremap <buffer> A Ф
-lnoremap <buffer> B И
-lnoremap <buffer> C С
-lnoremap <buffer> D В
-lnoremap <buffer> E У
-lnoremap <buffer> F А
-lnoremap <buffer> G П
-lnoremap <buffer> H Р
-lnoremap <buffer> I Ш
-lnoremap <buffer> J О
-let s:cpo_save=&cpo
-set cpo&vim
-lnoremap <buffer> K Л
-lnoremap <buffer> L Д
-lnoremap <buffer> M Ь
-lnoremap <buffer> N Т
-lnoremap <buffer> O Щ
-lnoremap <buffer> P З
-lnoremap <buffer> Q Й
-lnoremap <buffer> R К
-lnoremap <buffer> S Ы
-lnoremap <buffer> T Е
-lnoremap <buffer> U Г
-lnoremap <buffer> V М
-lnoremap <buffer> W Ц
-lnoremap <buffer> X Ч
-lnoremap <buffer> Y Н
-lnoremap <buffer> Z Я
-lnoremap <buffer> [ х
-lnoremap <buffer> ] ъ
-lnoremap <buffer> ^ :
-lnoremap <buffer> ` ё
-lnoremap <buffer> a ф
-lnoremap <buffer> b и
-lnoremap <buffer> c с
-lnoremap <buffer> d в
-lnoremap <buffer> e у
-lnoremap <buffer> f а
-lnoremap <buffer> g п
-lnoremap <buffer> h р
-lnoremap <buffer> i ш
-lnoremap <buffer> j о
-lnoremap <buffer> k л
-lnoremap <buffer> l д
-lnoremap <buffer> m ь
-lnoremap <buffer> n т
-lnoremap <buffer> o щ
-lnoremap <buffer> p з
-lnoremap <buffer> q й
-lnoremap <buffer> r к
-lnoremap <buffer> s ы
-lnoremap <buffer> t е
-lnoremap <buffer> u г
-lnoremap <buffer> v м
-lnoremap <buffer> w ц
-lnoremap <buffer> x ч
-lnoremap <buffer> y н
-lnoremap <buffer> z я
-lnoremap <buffer> { Х
-lnoremap <buffer> } Ъ
-lnoremap <buffer> ~ Ё
-let &cpo=s:cpo_save
-unlet s:cpo_save
-setlocal keymap=russian-jcukenwin
+setlocal keymap=
 setlocal noarabic
 setlocal autoindent
 setlocal balloonexpr=
@@ -225,21 +154,21 @@ setlocal nodiff
 setlocal equalprg=
 setlocal errorformat=
 setlocal noexpandtab
-if &filetype != 'conf'
-setlocal filetype=conf
+if &filetype != 'javascript'
+setlocal filetype=javascript
 endif
 set foldcolumn=4
 setlocal foldcolumn=0
 setlocal foldenable
 setlocal foldexpr=0
 setlocal foldignore=#
-setlocal foldlevel=1
+setlocal foldlevel=0
 setlocal foldmarker={{{,}}}
 set foldmethod=syntax
 setlocal foldmethod=syntax
 setlocal foldminlines=1
 setlocal foldnestmax=20
-setlocal foldtext=foldtext()
+setlocal foldtext=JSFold()
 setlocal formatexpr=
 setlocal formatoptions=tcq
 setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
@@ -251,7 +180,7 @@ setlocal includeexpr=
 setlocal indentexpr=
 setlocal indentkeys=0{,0},:,0#,!^F,o,O,e
 setlocal noinfercase
-setlocal iskeyword=@,48-57,_,192-255
+setlocal iskeyword=@,48-57,_,192-255,$
 setlocal keywordprg=
 setlocal nolinebreak
 setlocal nolisp
@@ -283,26 +212,45 @@ setlocal spellfile=
 setlocal spelllang=en
 setlocal statusline=
 setlocal suffixesadd=
-setlocal swapfile
+setlocal noswapfile
 setlocal synmaxcol=3000
-if &syntax != 'conf'
-setlocal syntax=conf
+if &syntax != 'javascript'
+setlocal syntax=javascript
 endif
 setlocal tabstop=4
 setlocal tags=
 setlocal textwidth=0
 setlocal thesaurus=
-setlocal nowinfixheight
+setlocal winfixheight
 setlocal nowinfixwidth
 set nowrap
 setlocal nowrap
 setlocal wrapmargin=0
-let s:l = 89 - ((40 * winheight(0) + 28) / 57)
+7
+normal zo
+35
+normal zo
+47
+normal zo
+57
+normal zc
+47
+normal zo
+35
+normal zo
+7
+normal zo
+314
+normal zo
+314
+normal zc
+let s:l = 49 - ((48 * winheight(0) + 28) / 56)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-89
-normal! 019l
+49
+normal! 06l
+lcd ~/workspace/Erpoge\ Client
 tabnext 1
 if exists('s:wipebuf')
   silent exe 'bwipe ' . s:wipebuf
