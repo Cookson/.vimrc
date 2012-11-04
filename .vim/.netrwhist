@@ -1,8 +1,11 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =6
+let g:netrw_dirhist_cnt =9
 let g:netrw_dirhist_1='/home/cookson/.usrscr'
 let g:netrw_dirhist_2='/media/AE26FC8426FC4EB9/Users/Cookson/Desktop/Работа/Разное/bitrixex'
 let g:netrw_dirhist_3='/home/cookson/workspace/Erpoge Client/core'
 let g:netrw_dirhist_4='/'
 let g:netrw_dirhist_5='/home/cookson/.junk'
 let g:netrw_dirhist_6='/etc/apt/sources.list.d'
+let g:netrw_dirhist_7='/home/cookson/.usrscr'
+let g:netrw_dirhist_8='/home/cookson/workspace/Erpoge Server/src/erpoge'
+let g:netrw_dirhist_9='/home/cookson/.vim'

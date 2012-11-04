@@ -16,3 +16,6 @@
 [submodule ".vim/bundle/pastebin"]
 	path = .vim/bundle/pastebin
 	url = https://github.com/mattn/pastebin-vim.git
+[submodule "/home/cookson/.vim/bundle/minibufexpl"]
+	path = .vim/bundle/minibufexpl
+	url = https://github.com/fholgado/minibufexpl.vim.git

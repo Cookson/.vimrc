@@ -1,63 +1,3 @@
-" All the default persistent things
-" Indentation
-set autoindent
-set smarttab
-
-" Folding
-set foldmethod=syntax
-set foldenable
-set foldlevelstart=1
-let javascript_fold=1
-
-set number
-set ruler
-set nowrap 
-set ignorecase
-set mouse=
-
-colorscheme desert
-
-set tabstop=4
-set shiftwidth=4
-
-call pathogen#infect()
-set keymap=russian-jcukenwin
-set iminsert=0
-set imsearch=0
-
-:let mapleader=","
-let insertJsLog = 1
-" Custom common leader commands
-nnoremap <leader>sl :SessionList<CR>
-nnoremap <leader>ss :SessionSave<CR>
-nnoremap <leader>sc :SessionClose<CR>
-nnoremap <leader>rr :vsplit $MYVIMRC<CR>
-nnoremap <leader>rs :so $MYVIMRC<CR>
-nnoremap <space> za
-nnoremap <Left> <nop>
-nnoremap <Right> <nop>
-nnoremap <Up> <nop>
-nnoremap <Down> <nop>
-nnoremap <c-f> :Grep<Space>
-imap <C-Space> <C-X><C-I>
-command! W w
-" NERDTree mappings
-" Focus NERDTree window and enter search mode 
-" to type a filename to select.
-nnoremap <leader>m <C-w>hgg/
-nnoremap <F12> :call NERDTreeTouch()<cr>
-nnoremap <C-F12> :NERDTreeClose<CR>
-nnoremap <leader>c :call ToggleComments()<cr>
-function! NERDTreeTouch()
-" Starts NERDTree if it isn't open
-" If NERDTree is open, focus it and enter search mode
-	if bufexists("NERD_tree_1")
-		NERDTreeFocus
-		call feedkeys("/")
-	else
-		NERDTree
-	endif
-endfunction
 function! ToggleComments() 
 	execute "normal! ^"
 	let curCol=col(".")-1
@@ -115,8 +55,7 @@ endfunction
 function! JavaScriptFold() 
 	setl foldmethod=syntax
 	setl foldlevelstart=1
-	syn region foldBraces start=/{/ end=/}/ transparent fold keepend extend
-
+	" sy region foldBraces start=/{/ end=/}/ transparent fold keepend extend
 	function! JSFold()
 		return substitute(getline(v:foldstart), "\t", "    ", "g")
 	endfunction
@@ -166,10 +105,8 @@ function! s:InsertJSBreakpoint(method, defaultText)
 			let l = getline(lnr)
 		endwhile
 		if len(matchstr(l, "{[ \t]*$")) > 0
-			echom "LLL"
 			let tabs = repeat("\<Tab>", len(matchstr(getline(lnr), "\t*"))+1)
 		else
-			echom "KKK"
 			let tabs = repeat("\<Tab>", len(matchstr(getline(lnr), "\t*")))
 		endif
 		execute "normal! 0i" . tabs . a:method . ";\<esc>i"		
@@ -189,7 +126,6 @@ function! s:InsertJSBreakpoint(method, defaultText)
 		elseif g:insertJsLog==3
 			let text = "\"KEKEKE\""
 			let g:insertJsLog = 0
-
 		endif
 		let g:insertJsLog += 1
 		execute "normal! i" . text ."\<esc>$"
@@ -213,19 +149,66 @@ function! s:SurroundWithTryCatch()
 	execute "normal! " . (endl+3) . "ggi" . repeat("\<Tab>", s:HowManyTabs(startl))
 	call feedkeys("A", "n") " Press A in normal mode
 endfunction
-inoremap <s-cr> <esc>:call InsertJSDocLineStart()<cr>
-au FileType javascript call JavaScriptFold()
-
+function! LoadServerToBuffers()
+	let command = "find /home/cookson/workspace -wholename '*src/erpoge/*.java' | sed 's/ /\\\\\\ /'"
+	echom command
+	let output = system(command)
+	let files = split(output, "\n")
+	for file in files
+		execute "badd " . file
+	endfor
+endfunction
+" Setting options
+set autoindent
+set smarttab
+set foldmethod=syntax
+set foldenable
+set foldlevelstart=1
+let javascript_fold=1
+set number
+set ruler
+set nowrap 
+set ignorecase
+set mouse=
+colorscheme desert
+set tabstop=4
+set shiftwidth=4
+call pathogen#infect()
+set keymap=russian-jcukenwin
+set iminsert=0
+set imsearch=0
+let mapleader=","
+let insertJsLog = 1
+command! W w
+" Autocmds
+au! FileType javascript 
+	\ call JavaScriptFold() |
+	\ nnoremap ,jc :call InsertJSDoc()<cr>
+au! FileType java 
+	\ call JavaScriptFold() |
+	\ compiler ant |
+	\ set makeprg=ant\ -find\ 'build.xml'
+autocmd! FileType 
+	\ vim setlocal foldmethod=manual
+autocmd! BufRead *s\ list.txt nnoremap <c-d> yyp
+autocmd! BufWinLeave *.* mkview
+autocmd! BufWinEnter *.* silent loadview
 " Abbreviations
 iabbrev fucntion function
-" Autocmds
-autocmd VimLeave * NERDTreeClose
-autocmd FileType nerdtree nnoremap <buffer> <leader>m <C-w>l
-autocmd FileType javascript nnoremap ,jc :call InsertJSDoc()<cr>
-autocmd FileType vim setlocal foldmethod=manual
-autocmd BufRead *s\ list.txt nnoremap <c-d> yyp
-autocmd BufWinLeave *.* mkview
-autocmd BufWinEnter *.* silent loadview
+" Mappings
+nnoremap <leader>sl :SessionList<CR>
+nnoremap <leader>ss :SessionSave<CR>
+nnoremap <leader>sc :SessionClose<CR>
+nnoremap <leader>rr :vsplit $MYVIMRC<CR>
+nnoremap <leader>rs :so $MYVIMRC<CR>
+nnoremap <space> za
+nnoremap <Left> <nop>
+nnoremap <Right> <nop>
+nnoremap <Up> <nop>
+nnoremap <Down> <nop>
+nnoremap <c-f> :Grep<Space>
+imap <C-Space> <C-X><C-I>
+inoremap <s-cr> <esc>:call InsertJSDocLineStart()<cr>
 nnoremap <leader>l :call <SID>InsertJSBreakpoint('console.log()', 1)<cr>
 nnoremap <leader>L :call <SID>InsertJSBreakpoint('console.log()', 0)<cr>
 nnoremap <leader>e :call <SID>InsertJSBreakpoint('throw new Error()', 1)<cr>
@@ -233,6 +216,9 @@ nnoremap <leader>E :call <SID>InsertJSBreakpoint('throw new Error()', 0)<cr>
 vnoremap <leader>t <Esc>:call <SID>SurroundWithTryCatch()<cr>
 nnoremap <F2> :w<cr>
 inoremap <c-d> <c-o>diw
+noremap <expr> } <SID>ToEdgeOfBlock(1)
+noremap <expr> { <SID>ToEdgeOfBlock(0)
+nnoremap <M-o> :b 
 " Removing shit from GUI so there is more space for everything
 set guioptions-=m  "remove menu bar
 set guioptions-=T  "remove toolbar
@@ -243,7 +229,3 @@ set fdc=0
 " Inside parenthesis
 onoremap p i(
 
-
-noremap <expr> } <SID>ToEdgeOfBlock(1)
-noremap <expr> { <SID>ToEdgeOfBlock(0)
-nnoremap <M-o> :b 
