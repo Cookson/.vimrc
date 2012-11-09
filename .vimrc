@@ -187,15 +187,17 @@ au! FileType javascript
 au! FileType java 
 	\ call JavaScriptFold() |
 	\ compiler ant |
-	\ set makeprg=ant\ -find\ 'build.xml'
-autocmd! FileType 
-	\ vim setlocal foldmethod=manual
-autocmd! BufRead *s\ list.txt nnoremap <c-d> yyp
+	\ set makeprg=ant\ -find\ 'build.xml' | 
+	\ nnoremap ,bs :!ant buildStaticData<cr>
+autocmd BufRead,BufNewFile *.xsd
+	\ set filetype=xml
+autocmd! BufRead *s\ list.txt 
 autocmd! BufWinLeave *.* mkview
 autocmd! BufWinEnter *.* silent loadview
 " Abbreviations
 iabbrev fucntion function
 " Mappings
+nnoremap <leader>d yyp
 nnoremap <leader>sl :SessionList<CR>
 nnoremap <leader>ss :SessionSave<CR>
 nnoremap <leader>sc :SessionClose<CR>
