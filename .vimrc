@@ -158,6 +158,20 @@ function! LoadServerToBuffers()
 		execute "badd " . file
 	endfor
 endfunction
+function! s:ShowLog(command)
+" Show output of a system command in a separate window
+	let isJavaOutputWindow = 0
+	windo if &filetype ==# 'suseilog' | let bufstatus="" | let isJavaOutputWindow = 1 | execute "set statusline=Running\\ a\\ command" | let @c = system(a:command) | execute "normal ggdG\"cp" | execute "set statusline=".bufstatus | endif
+	if isJavaOutputWindow == 0
+		new
+		set filetype=suseilog
+		let bufstatus=&statusline
+		set statusline=Running\ a\ command...
+		let @c = system(a:command)
+		execute "normal ggdG\"cp"
+		execute "set statusline=".bufstatus
+	endif
+endfunction
 " Setting options
 set autoindent
 set smarttab
@@ -177,6 +191,7 @@ call pathogen#infect()
 set keymap=russian-jcukenwin
 set iminsert=0
 set imsearch=0
+set foldcolumn=0
 let mapleader=","
 let insertJsLog = 1
 command! W w
@@ -221,6 +236,7 @@ inoremap <c-d> <c-o>diw
 noremap <expr> } <SID>ToEdgeOfBlock(1)
 noremap <expr> { <SID>ToEdgeOfBlock(0)
 nnoremap <M-o> :b 
+nnoremap <F9> :call <SID>ShowLog("ant -f /home/cookson/workspace/Erpoge\\\ Server/build.xml all && ant -f /home/cookson/workspace/Erpoge\\\ Server/build.xml buildStaticData")<cr><cr>
 " Removing shit from GUI so there is more space for everything
 set guioptions-=m  "remove menu bar
 set guioptions-=T  "remove toolbar
