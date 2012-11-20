@@ -161,8 +161,11 @@ endfunction
 function! s:ShowLog(command)
 " Show output of a system command in a separate window
 	let isJavaOutputWindow = 0
+	" If window with filetype=suseilog was already open, 
+	" then display output of a command in that window
 	windo if &filetype ==# 'suseilog' | let bufstatus="" | let isJavaOutputWindow = 1 | execute "set statusline=Running\\ a\\ command" | let @c = system(a:command) | execute "normal ggdG\"cp" | execute "set statusline=".bufstatus | endif
 	if isJavaOutputWindow == 0
+	" Else display it in a new window
 		new
 		set filetype=suseilog
 		let bufstatus=&statusline
@@ -170,6 +173,9 @@ function! s:ShowLog(command)
 		let @c = system(a:command)
 		execute "normal ggdG\"cp"
 		execute "set statusline=".bufstatus
+		" Snap window to the bottom side of VIM and set its height to 14 lines
+		execute "normal \<c-w>J\<c-w>14_"
+		call feedkeys("<cr>", "n")
 	endif
 endfunction
 " Setting options
@@ -209,6 +215,8 @@ autocmd BufRead,BufNewFile *.xsd
 autocmd! BufRead *s\ list.txt 
 autocmd! BufWinLeave *.* mkview
 autocmd! BufWinEnter *.* silent loadview
+autocmd! FileType suseilog 
+	\ nnoremap Q :q!<cr>
 " Abbreviations
 iabbrev fucntion function
 " Mappings
@@ -236,7 +244,7 @@ inoremap <c-d> <c-o>diw
 noremap <expr> } <SID>ToEdgeOfBlock(1)
 noremap <expr> { <SID>ToEdgeOfBlock(0)
 nnoremap <M-o> :b 
-nnoremap <F9> :call <SID>ShowLog("ant -f /home/cookson/workspace/Erpoge\\\ Server/build.xml all && ant -f /home/cookson/workspace/Erpoge\\\ Server/build.xml buildStaticData")<cr><cr>
+nnoremap <F9> :call <SID>ShowLog("ant -f /home/cookson/workspace/Erpoge\\\ Server/build.xml all && ant -f /home/cookson/workspace/Erpoge\\\ Server/build.xml buildStaticData")<cr>
 " Removing shit from GUI so there is more space for everything
 set guioptions-=m  "remove menu bar
 set guioptions-=T  "remove toolbar
