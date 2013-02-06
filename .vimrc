@@ -150,7 +150,7 @@ function! s:SurroundWithTryCatch()
 	call feedkeys("A", "n") " Press A in normal mode
 endfunction
 function! LoadServerToBuffers()
-	let command = "find /home/cookson/workspace -wholename '*src/erpoge/*.java' | sed 's/ /\\\\\\ /'"
+	let command = "find /home/suseika/workspace -wholename '*src/erpoge/*.java' | sed 's/ /\\\\\\ /'"
 	echom command
 	let output = system(command)
 	let files = split(output, "\n")
@@ -178,7 +178,16 @@ function! s:ShowLog(command)
 		call feedkeys("<cr>", "n")
 	endif
 endfunction
+function! ModeChange()
+" Makes current file executable
+    if getline(1) =~ "^#!"
+        if getline(1) =~ "bin/"
+            silent !chmod a+x <afile>
+        endif
+    endif
+endfunction
 " Setting options
+syntax enable
 set autoindent
 set smarttab
 set foldmethod=syntax
@@ -193,6 +202,7 @@ set mouse=
 colorscheme desert
 set tabstop=4
 set shiftwidth=4
+let g:pastebin_api_dev_key = 'f2349ac9b15712183409f11456812adc'
 call pathogen#infect()
 set keymap=russian-jcukenwin
 set iminsert=0
@@ -200,7 +210,13 @@ set imsearch=0
 set foldcolumn=0
 let mapleader=","
 let insertJsLog = 1
+filetype on
+filetype plugin on
+filetype indent on 
 command! W w
+command! Q q
+" command! Q q
+"nnoremap Q <nop>
 " Autocmds
 au! FileType javascript 
 	\ call JavaScriptFold() |
@@ -212,6 +228,7 @@ au! FileType java
 	\ nnoremap ,bs :!ant buildStaticData<cr>
 autocmd BufRead,BufNewFile *.xsd
 	\ set filetype=xml
+au BufWritePost * call ModeChange()
 autocmd! BufRead *s\ list.txt 
 autocmd! BufWinLeave *.* mkview
 autocmd! BufWinEnter *.* silent loadview
@@ -233,6 +250,7 @@ nnoremap <Up> <nop>
 nnoremap <Down> <nop>
 nnoremap <c-f> :Grep<Space>
 imap <C-Space> <C-X><C-I>
+nnoremap <M-r> :!./%<cr>
 inoremap <s-cr> <esc>:call InsertJSDocLineStart()<cr>
 nnoremap <leader>l :call <SID>InsertJSBreakpoint('console.log()', 1)<cr>
 nnoremap <leader>L :call <SID>InsertJSBreakpoint('console.log()', 0)<cr>
@@ -240,11 +258,13 @@ nnoremap <leader>e :call <SID>InsertJSBreakpoint('throw new Error()', 1)<cr>
 nnoremap <leader>E :call <SID>InsertJSBreakpoint('throw new Error()', 0)<cr>
 vnoremap <leader>t <Esc>:call <SID>SurroundWithTryCatch()<cr>
 nnoremap <F2> :w<cr>
+nnoremap Q :q<cr>
+inoremap <c-l> <c-^>
 inoremap <c-d> <c-o>diw
 noremap <expr> } <SID>ToEdgeOfBlock(1)
 noremap <expr> { <SID>ToEdgeOfBlock(0)
 nnoremap <M-o> :b 
-nnoremap <F9> :call <SID>ShowLog("ant -f /home/cookson/workspace/Erpoge\\\ Server/build.xml all && ant -f /home/cookson/workspace/Erpoge\\\ Server/build.xml buildStaticData")<cr>
+nnoremap <F9> :call <SID>ShowLog("ant -f /home/suseika/workspace/Erpoge\\\ Server/build.xml all && ant -f /home/suseika/workspace/Erpoge\\\ Server/build.xml buildStaticData")<cr>
 " Removing shit from GUI so there is more space for everything
 set guioptions-=m  "remove menu bar
 set guioptions-=T  "remove toolbar
@@ -254,4 +274,4 @@ set fdc=0
 " Motions
 " Inside parenthesis
 onoremap p i(
-
+set fileencodings+=cp1251
